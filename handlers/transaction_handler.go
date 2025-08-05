@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	db "StudiKasus/database"
+	"StudiKasus/database"
 	"StudiKasus/models"
 	"html/template"
 	"net/http"
