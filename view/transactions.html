@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Riwayat Transaksi</title>
+</head>
+<body>
+    <h1>Riwayat Transaksi</h1>
+    <a href="/">← Kembali ke Daftar Barang</a>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Total Harga</th>
+                <th>Waktu Transaksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.ItemName}}</td>
+                <td>{{.Quantity}}</td>
+                <td>{{.Total}}</td>
+                <td>{{.Timestamp.Format "02-01-2006 15:04:05"}}</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</body>
+</html>

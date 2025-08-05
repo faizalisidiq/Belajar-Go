@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Daftar Barang</title></head>
+<body>
+    <h1>Inventaris Barang</h1>
+    <a href="/add">Tambah Barang</a> |
+    <a href="/buy">Beli Barang</a> |
+    <a href="/transactions">Riwayat Transaksi</a>
+    <hr>
+    <table border="1">
+        <tr><th>ID</th><th>Nama</th><th>Harga</th><th>Stok</th></tr>
+        {{range .}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Price}}</td>
+            <td>{{.Quantity}}</td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+</html>
