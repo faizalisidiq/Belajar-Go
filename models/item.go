@@ -1,8 +1,8 @@
 package models
 
 type Item struct {
-	ID          int `gorm:"primaryKey"`
-	Name        string `gorm:"not null"`
-	Price		float64
-	Quantity	int
+	ID          uint 	`gorm:"primaryKey"`
+	Name        string 	`gorm:"not null"`
+	Price		float64 `gor:"not null"`
+	Quantity	int		`gor:"not null"`
 }
