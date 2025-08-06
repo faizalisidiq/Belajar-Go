@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head><title>Daftar Barang</title></head>
-<body>
+  <head>
+    <title>Daftar Barang</title>
+  </head>
+  <body>
     <h1>Inventaris Barang</h1>
-    <a href="/add">Tambah Barang</a> |
-    <a href="/buy">Beli Barang</a> |
+    <a href="/add">Tambah Barang</a> | <a href="/buy">Beli Barang</a> |
     <a href="/transactions">Riwayat Transaksi</a>
-    <hr>
+    <hr />
     <table border="1">
-        <tr><th>ID</th><th>Nama</th><th>Harga</th><th>Stok</th></tr>
-        {{range .}}
-        <tr>
-            <td>{{.ID}}</td>
-            <td>{{.Name}}</td>
-            <td>{{.Price}}</td>
-            <td>{{.Quantity}}</td>
-        </tr>
-        {{end}}
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Harga</th>
+        <th>Stok</th>
+        <th>Aksi</th>
+      </tr>
+      {{range .}}
+      <tr>
+        <td>{{.ID}}</td>
+        <td>{{.Name}}</td>
+        <td>{{.Price}}</td>
+        <td>{{.Quantity}}</td>
+        <td>
+          <form method="POST" action="/delete" style="display: inline" onsubmit="return confirm('Yakin ingin menghapus item ini?')">
+            <input type="hidden" name="id" value="{{.ID}}" />
+            <button type="submit" style="background-color: #ff4444; color: white; border: none; padding: 5px 10px; cursor: pointer">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {{end}}
     </table>
-</body>
+  </body>
 </html>

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"StudiKasus/database"
-	"StudiKasus/models"
+	db "StudiKasus/database"
 	"StudiKasus/handlers"
+	"StudiKasus/models"
 	"net/http"
 )
 
@@ -13,6 +13,7 @@ func main()  {
 
 	http.HandleFunc("/", handlers.IndexHandler)
 	http.HandleFunc("/add", handlers.AddItemHandler)
+	http.HandleFunc("/delete", handlers.DeleteItemHandler)
 	http.HandleFunc("/buy", handlers.BuyItemHandler)
 	http.HandleFunc("/transactions", handlers.TransactionsHandler)
 

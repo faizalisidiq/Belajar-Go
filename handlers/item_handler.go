@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"html/template"
-	"StudiKasus/database"
+	db "StudiKasus/database"
 	"StudiKasus/models"
+	"html/template"
 	"net/http"
 	"strconv"
 )
@@ -34,4 +34,23 @@ func AddItemHandler(w http.ResponseWriter, r *http.Request)  {
 
 	tmpl := template.Must(template.ParseFiles("view/add.html"))
 	tmpl.Execute(w, nil)
+}
+
+func DeleteItemHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		idStr := r.FormValue("id")
+		id, err := strconv.Atoi(idStr)
+		if err != nil {
+			http.Error(w, "Invalid ID", http.StatusBadRequest)
+			return
+		}
+
+		// Delete item from database
+		db.DB.Delete(&models.Item{}, id)
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	
+	// If not POST, redirect to home
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
